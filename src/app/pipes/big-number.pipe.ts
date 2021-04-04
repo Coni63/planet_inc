@@ -11,7 +11,7 @@ export class BigNumberPipe implements PipeTransform {
     if (value.isGreaterThanOrEqualTo(threshold)){
       return value.toExponential(2);
     } else {
-      return value.toFormat(2);
+      return value.toFormat(0);
     }
     
   }

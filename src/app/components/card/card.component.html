@@ -7,9 +7,8 @@
                     <div class="planet-name">{{ planet.name }}</div>
                 </div>
                 <div class="card__body">
-                    <app-planet-production [items]="planet.production"></app-planet-production>
-                    {{ a | bigNumber }}
-                    {{ b | bigNumber }}
+                    <app-planet-production [item]="planet.production"></app-planet-production>
+                    <app-planet-storage [items]="planet.storage"></app-planet-storage>
                 </div>
                 <div class="card__footer">
                     <div class="upgrade-block">

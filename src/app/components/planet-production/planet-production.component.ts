@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IItem } from 'src/app/interfaces/IItem';
+import { Item } from 'src/app/classes/item';
 
 @Component({
   selector: 'app-planet-production',
@@ -8,7 +8,7 @@ import { IItem } from 'src/app/interfaces/IItem';
 })
 export class PlanetProductionComponent implements OnInit {
 
-  @Input() items: IItem[] = [];
+  @Input() item: Item;
 
   constructor() { }
 

@@ -9,6 +9,9 @@ import { BigNumberPipe } from './pipes/big-number.pipe';
 import { PlanetsService } from './services/planets.service';
 import { PlanetProductionComponent } from './components/planet-production/planet-production.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ItemsService } from './services/items.service';
+import { PlanetStorageComponent } from './components/planet-storage/planet-storage.component';
+import { StorageService } from './services/storage.service';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CardComponent,
     BigNumberPipe,
     PlanetProductionComponent,
+    PlanetStorageComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
   ],
   providers: [
-    PlanetsService
+    StorageService,
+    PlanetsService,
+    ItemsService
   ],
   bootstrap: [AppComponent]
 })

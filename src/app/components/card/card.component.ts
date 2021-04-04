@@ -1,9 +1,8 @@
 import { Component, OnInit, ElementRef, Input } from '@angular/core';
-import { BigNumber } from 'bignumber.js'
 
 import { faTachometerAlt, faArchive, faSpaceShuttle, faWarehouse, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
-import { IPlanet } from '../../interfaces/IPlanet';
+import { Planet } from 'src/app/classes/planet';
 
 @Component({
   selector: 'app-card',
@@ -16,13 +15,12 @@ export class CardComponent implements OnInit {
   volume = faArchive;
   storage = faWarehouse;
   production = faPlusSquare;
-  a = new BigNumber(123.4567).dividedBy(4);  // https://www.npmjs.com/package/bignumber.js
-  b = new BigNumber(1265405065467486705640657065413); 
-  @Input() planet: IPlanet;
+  @Input() planet: Planet;
 
   constructor(private elem: ElementRef) { }
 
   ngOnInit(): void {
+    console.log(this.planet);
   }
 
   flip(event){

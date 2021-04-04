@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IPlanet } from './interfaces/IPlanet';
+import { Planet } from './classes/planet';
+import { PlanetsService } from './services/planets.service';
 
 @Component({
   selector: 'app-root',
@@ -8,25 +9,11 @@ import { IPlanet } from './interfaces/IPlanet';
 })
 export class AppComponent {
   title = 'incremental';
+  planets : Planet[];
 
-  planets : IPlanet[] = [
-    {
-      name: "aaaaa",
-      production: [],
-      color: "planet-yellow",
-    },
-    {
-      name: "bbbbbb",
-      production: [],
-      color: "planet-blue",
-    },
-    {
-      name: "ccccc",
-      production: [],
-      color: "black-hole",
-    }
-  ];
+  constructor(private _planetService: PlanetsService) { }
 
-
-
+  ngOnInit() {
+    this.planets = this._planetService.planets;
+  }
 }
