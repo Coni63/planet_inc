@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "dbfbfec8-306e-4048-b48c-1c9b57105e71"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -25,7 +28,8 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/scripts/bignumber.min.js"
             ],
             "styles": [
               "src/styles.scss"
@@ -43,7 +47,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,

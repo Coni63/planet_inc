@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IPlanet } from './interfaces/IPlanet';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,25 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'incremental';
+
+  planets : IPlanet[] = [
+    {
+      name: "aaaaa",
+      production: [],
+      color: "planet-yellow",
+    },
+    {
+      name: "bbbbbb",
+      production: [],
+      color: "planet-blue",
+    },
+    {
+      name: "ccccc",
+      production: [],
+      color: "black-hole",
+    }
+  ];
+
+
+
 }
