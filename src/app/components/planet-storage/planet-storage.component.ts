@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Item } from 'src/app/classes/item';
+import BigNumber from 'bignumber.js';
 
 @Component({
   selector: 'app-planet-storage',
@@ -8,8 +8,9 @@ import { Item } from 'src/app/classes/item';
 })
 export class PlanetStorageComponent implements OnInit {
 
-  @Input() items: Item[];
+  @Input() items: { [key : string] : BigNumber };
   @Input() discoveredItems: Set<string>;
+  @Input() maxStorage: BigNumber;
 
   constructor() { }
 

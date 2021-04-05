@@ -1,36 +1,47 @@
-import { Item } from './item';
 import { BigNumber } from 'bignumber.js';
 import { Fleet } from './fleet';
 
 export class Planet {
     id: number;
     name: string;
-    production: Item;
-    storage: Item[];
+    production: { [key : string] : BigNumber };
+    storage: { [key : string] : BigNumber };
+    maxStorage: BigNumber;
     color: string;
     discovered: boolean;
+    next: Planet;
     fleet: Fleet;
+    production_level: number;
+    storage_level: number;
 
-    constructor(name: string, items: Item[], idx_production: number, color: string){
-        this.id = idx_production;
+    constructor(name: string, id: number, color: string){
+        this.id = id;
         this.name = name;
-        this.production = items[idx_production];
+        this.production = {};
         this.color = color;
-        this.storage = items;
+        this.storage = {};
+        this.maxStorage = new BigNumber(32);
         this.discovered = false;
         this.fleet = new Fleet(this.id);
     }
 
     increment(){
-        this.production.increment();
+        Object.keys(this.production).forEach(key => {
+            let next_value = this.storage[key].plus(this.production[key]);
+            this.storage[key] = next_value.isGreaterThanOrEqualTo(this.maxStorage) ? this.maxStorage : next_value;
+        });
     }
 
     upgrade_production(){
-        this.production.upgrade_production();
+        Object.keys(this.production).forEach(key => {
+            this.production[key] = this.production[key].multipliedBy(2);
+        });
+        this.production_level++;
     }
 
     upgrade_storage(){
-        this.storage.forEach(item => item.upgrade_storage());
+        this.maxStorage = this.maxStorage.multipliedBy(2);
+        this.storage_level++;
     }
 
     upgrade_units(){

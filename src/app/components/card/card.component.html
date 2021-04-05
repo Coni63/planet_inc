@@ -7,18 +7,18 @@
                     <div class="planet-name">{{ planet.name }}</div>
                 </div>
                 <div class="card__body">
-                    <app-planet-production [item]="planet.production"></app-planet-production>
-                    <app-planet-storage [items]="planet.storage" [discoveredItems]="discoveredItems"></app-planet-storage>
+                    <app-planet-production [items]="planet.production" [discoveredItems]="discoveredItems"></app-planet-production>
+                    <app-planet-storage [items]="planet.storage"  [discoveredItems]="discoveredItems" [maxStorage]="planet.maxStorage"></app-planet-storage>
                 </div>
                 <div class="card__footer">
-                    <div class="upgrade-block">
+                    <div class="upgrade-block" *ngIf="planet.next">
                         <button class="btn" (click)="upgrade_production($event)">
                             <fa-icon [icon]="production"></fa-icon>
                         </button>
                         <button class="btn" (click)="upgrade_storage($event)">
                             <fa-icon [icon]="storage"></fa-icon>
                         </button>
-                        <button class="btn" (click)="discover($event)">
+                        <button class="btn" (click)="discover($event)" *ngIf="planet.next?.discovered === false">
                             <fa-icon [icon]="search"></fa-icon>
                         </button>
                     </div>
@@ -33,10 +33,10 @@
                 </div>
                 <div class="card__body">
                     <app-planet-fleet [fleet]="planet.fleet"></app-planet-fleet>
-                    <app-planet-travel [fleet]="planet.fleet" [discoveredPlanets]="discoveredPlanets"></app-planet-travel>
+                    <app-planet-travel [fleet]="planet.fleet" [planets]="planets"></app-planet-travel>
                 </div>
                 <div class="card__footer">
-                    <div class="upgrade-block">
+                    <div class="upgrade-block" *ngIf="planet.next">
                         <button class="btn" (click)="upgrade_units($event)">
                             <fa-icon [icon]="production" ></fa-icon>
                         </button>

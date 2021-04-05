@@ -18,14 +18,14 @@ export class CardComponent implements OnInit {
   production = faPlusSquare;
   search = faSearch;
 
-  discoveredPlanets: Planet[];
+  planets: Planet[];
 
   @Input() planet: Planet;
   @Input() discoveredItems: Set<string>;
 
   constructor(private elem: ElementRef, private _planetService: PlanetsService) {
-    this.discoveredPlanets = this._planetService.discoveredPlanets;
-   }
+    this.planets = this._planetService.planets;
+  }
 
   ngOnInit(): void { }
 
@@ -35,7 +35,7 @@ export class CardComponent implements OnInit {
   }
 
   discover(event){
-    this._planetService.discover(this.planet.id);
+    this._planetService.discover(this.planet);
     event.stopPropagation();
   }
 

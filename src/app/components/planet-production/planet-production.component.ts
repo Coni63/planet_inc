@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Item } from 'src/app/classes/item';
+import BigNumber from 'bignumber.js';
 
 @Component({
   selector: 'app-planet-production',
@@ -8,7 +8,8 @@ import { Item } from 'src/app/classes/item';
 })
 export class PlanetProductionComponent implements OnInit {
 
-  @Input() item: Item;
+  @Input() items: { [key : string] : BigNumber };
+  @Input() discoveredItems: Set<string>;
 
   constructor() { }
 

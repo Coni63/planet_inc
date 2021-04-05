@@ -10,7 +10,7 @@ import { Fleet } from 'src/app/classes/fleet';
 export class PlanetTravelComponent implements OnInit {
 
   @Input() fleet: Fleet;
-  @Input() discoveredPlanets: Planet[];
+  @Input() planets: Planet[];
 
   constructor() { }
 

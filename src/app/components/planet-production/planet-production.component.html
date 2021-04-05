@@ -1,5 +1,9 @@
 <h3>Production</h3>
 <dl>
-    <dt>{{ item.name }}</dt>
-    <dd>{{ item.production | bigNumber:true }}</dd>
+    <ng-container *ngFor="let item of items | keyvalue">
+        <ng-container *ngIf="discoveredItems.has(item.key)">
+            <dt>{{ item.key }}</dt>
+            <dd>{{ item.value | bigNumber:true }}</dd>
+        </ng-container>
+    </ng-container>
 </dl>
