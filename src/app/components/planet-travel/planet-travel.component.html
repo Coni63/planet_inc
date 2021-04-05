@@ -1,0 +1,9 @@
+<h3>Travel</h3>
+<dl>
+    <ng-container *ngFor="let planet of discoveredPlanets; let index = index">
+        <ng-container *ngIf="index != fleet.planet_id">
+            <dt>{{ planet.name }}</dt>
+            <dd>{{ fleet.times[index] | bigNumber }} s</dd>
+        </ng-container>
+    </ng-container>
+</dl>

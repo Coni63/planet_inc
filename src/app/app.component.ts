@@ -18,8 +18,4 @@ export class AppComponent {
     this.planets = this._planetService.planets;
     this.discoveredItems = this._planetService.discoveredItems;
   }
-
-  discover() {
-    this._planetService.discover();
-  }
 }

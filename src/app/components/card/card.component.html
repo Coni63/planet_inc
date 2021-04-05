@@ -18,8 +18,30 @@
                         <button class="btn" (click)="upgrade_storage($event)">
                             <fa-icon [icon]="storage"></fa-icon>
                         </button>
+                        <button class="btn" (click)="discover($event)">
+                            <fa-icon [icon]="search"></fa-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card__face card__face--back">
+            <div class="card__content">
+                <div class="card__header">
+                    <div class="planet-icon" [ngClass]="planet.color"></div>
+                    <div class="planet-name">{{ planet.name }}</div>
+                </div>
+                <div class="card__body">
+                    <app-planet-fleet [fleet]="planet.fleet"></app-planet-fleet>
+                    <app-planet-travel [fleet]="planet.fleet" [discoveredPlanets]="discoveredPlanets"></app-planet-travel>
+                </div>
+                <div class="card__footer">
+                    <div class="upgrade-block">
+                        <button class="btn" (click)="upgrade_units($event)">
+                            <fa-icon [icon]="production" ></fa-icon>
+                        </button>
                         <button class="btn" (click)="upgrade_speed($event)">
-                            <fa-icon [icon]="speed" ></fa-icon>
+                            <fa-icon [icon]="speed"></fa-icon>
                         </button>
                         <button class="btn" (click)="upgrade_acceleration($event)">
                             <fa-icon [icon]="acceleration"></fa-icon>
@@ -27,16 +49,8 @@
                         <button class="btn" (click)="upgrade_volume($event)">
                             <fa-icon [icon]="volume"></fa-icon>
                         </button>
-                        
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="card__face card__face--back">
-            <div class="card__content">
-                <div class="card__header"></div>
-                <div class="card__body"></div>
-                <div class="card__footer"></div>
             </div>
         </div>
     </div>

@@ -15,6 +15,7 @@ export class PlanetsService {
   items: Item[]; 
   planets: Planet[];
   discoveredItems: Set<string> = new Set<string>();
+  discoveredPlanets: Planet[] = [];
   subscription: Subscription;
 
   constructor() {
@@ -39,22 +40,21 @@ export class PlanetsService {
 
     this.subscription = timer(0, 1000).subscribe(res => this.increment());
 
-    this.discover(); // discover 1st planet to start
+    this.discover(-1); // discover 1st planet to start
   }
 
-  discover(){
-    for (let i=0; i<this.planets.length; i++){
-      if (this.planets[i].discovered == false){
-        this.planets[i].discovered = true;
-        this.discoveredItems.add(this.planets[i].production.name);
-        return;
-      }
-    }
+  discover(planet_id: number){
+    let new_planet = this.planets[planet_id+1]
+    new_planet.discovered = true;
+    this.discoveredItems.add(new_planet.production.name);
+    this.discoveredPlanets.push(new_planet);
   }
 
   increment(){
     this.planets.forEach((planet) => {
-      planet.increment();
+      if (planet.discovered){
+        planet.increment();
+      } 
     });
   }
 

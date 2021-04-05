@@ -1,8 +1,9 @@
 import { Component, OnInit, ElementRef, Input } from '@angular/core';
 
-import { faTachometerAlt, faArchive, faSpaceShuttle, faWarehouse, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { faTachometerAlt, faArchive, faSpaceShuttle, faWarehouse, faPlusSquare, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import { Planet } from 'src/app/classes/planet';
+import { PlanetsService } from 'src/app/services/planets.service';
 
 @Component({
   selector: 'app-card',
@@ -15,17 +16,26 @@ export class CardComponent implements OnInit {
   volume = faArchive;
   storage = faWarehouse;
   production = faPlusSquare;
+  search = faSearch;
+
+  discoveredPlanets: Planet[];
+
   @Input() planet: Planet;
   @Input() discoveredItems: Set<string>;
 
-  constructor(private elem: ElementRef) { }
+  constructor(private elem: ElementRef, private _planetService: PlanetsService) {
+    this.discoveredPlanets = this._planetService.discoveredPlanets;
+   }
 
-  ngOnInit(): void {
-    console.log(this.planet);
-  }
+  ngOnInit(): void { }
 
   flip(event){
     this.elem.nativeElement.querySelector(".card__inner").classList.toggle('is-flipped');
+    event.stopPropagation();
+  }
+
+  discover(event){
+    this._planetService.discover(this.planet.id);
     event.stopPropagation();
   }
 
@@ -36,6 +46,11 @@ export class CardComponent implements OnInit {
 
   upgrade_storage(event){
     this.planet.upgrade_storage();
+    event.stopPropagation();
+  }
+
+  upgrade_units(event){
+    this.planet.upgrade_units();
     event.stopPropagation();
   }
 

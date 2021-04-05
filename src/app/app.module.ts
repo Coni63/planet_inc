@@ -12,6 +12,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ItemsService } from './services/items.service';
 import { PlanetStorageComponent } from './components/planet-storage/planet-storage.component';
 import { StorageService } from './services/storage.service';
+import { PlanetFleetComponent } from './components/planet-fleet/planet-fleet.component';
+import { PlanetTravelComponent } from './components/planet-travel/planet-travel.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { StorageService } from './services/storage.service';
     BigNumberPipe,
     PlanetProductionComponent,
     PlanetStorageComponent,
+    PlanetFleetComponent,
+    PlanetTravelComponent,
   ],
   imports: [
     BrowserModule,

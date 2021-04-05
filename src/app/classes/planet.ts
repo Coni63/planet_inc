@@ -1,5 +1,6 @@
 import { Item } from './item';
 import { BigNumber } from 'bignumber.js';
+import { Fleet } from './fleet';
 
 export class Planet {
     id: number;
@@ -8,6 +9,7 @@ export class Planet {
     storage: Item[];
     color: string;
     discovered: boolean;
+    fleet: Fleet;
 
     constructor(name: string, items: Item[], idx_production: number, color: string){
         this.id = idx_production;
@@ -16,6 +18,7 @@ export class Planet {
         this.color = color;
         this.storage = items;
         this.discovered = false;
+        this.fleet = new Fleet(this.id);
     }
 
     increment(){
@@ -30,16 +33,20 @@ export class Planet {
         this.storage.forEach(item => item.upgrade_storage());
     }
 
+    upgrade_units(){
+        this.fleet.upgrade_units();
+    }
+
     upgrade_speed(){
-        console.log("upgrade_speed");
+        this.fleet.upgrade_speed();
     }
 
     upgrade_acceleration(){
-        console.log("upgrade_acceleration");
+        this.fleet.upgrade_acceleration();
     }
 
     upgrade_volume(){
-        console.log("upgrade_volume");
+        this.fleet.upgrade_volume();
     }
 
 }
