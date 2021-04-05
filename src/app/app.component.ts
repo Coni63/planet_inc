@@ -10,10 +10,16 @@ import { PlanetsService } from './services/planets.service';
 export class AppComponent {
   title = 'incremental';
   planets : Planet[];
+  discoveredItems: Set<string>;
 
   constructor(private _planetService: PlanetsService) { }
 
   ngOnInit() {
     this.planets = this._planetService.planets;
+    this.discoveredItems = this._planetService.discoveredItems;
+  }
+
+  discover() {
+    this._planetService.discover();
   }
 }

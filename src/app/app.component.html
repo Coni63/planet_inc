@@ -1,5 +1,9 @@
 <app-background></app-background>
 
 <div class="content-wrapper">
-  <app-card *ngFor="let planet of planets" [planet]="planet"></app-card>
+  <ng-container *ngFor="let planet of planets">
+    <app-card *ngIf="planet.discovered" [planet]="planet" [discoveredItems]="discoveredItems"></app-card>
+  </ng-container>
+  <input type="button" value="fkhgsd" (click)="discover()"/>
 </div>
+

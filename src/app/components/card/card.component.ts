@@ -16,6 +16,7 @@ export class CardComponent implements OnInit {
   storage = faWarehouse;
   production = faPlusSquare;
   @Input() planet: Planet;
+  @Input() discoveredItems: Set<string>;
 
   constructor(private elem: ElementRef) { }
 
@@ -25,30 +26,31 @@ export class CardComponent implements OnInit {
 
   flip(event){
     this.elem.nativeElement.querySelector(".card__inner").classList.toggle('is-flipped');
+    event.stopPropagation();
   }
 
   upgrade_production(event){
-    console.log("upgrade_production");
+    this.planet.upgrade_production();
     event.stopPropagation();
   }
 
   upgrade_storage(event){
-    console.log("upgrade_storage");
+    this.planet.upgrade_storage();
     event.stopPropagation();
   }
 
   upgrade_speed(event){
-    console.log("upgrade_speed");
+    this.planet.upgrade_speed();
     event.stopPropagation();
   }
 
   upgrade_acceleration(event){
-    console.log("upgrade_acceleration");
+    this.planet.upgrade_acceleration();
     event.stopPropagation();
   }
 
   upgrade_volume(event){
-    console.log("upgrade_volume");
+    this.planet.upgrade_volume();
     event.stopPropagation();
   }
 

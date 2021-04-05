@@ -9,6 +9,7 @@ import { Item } from 'src/app/classes/item';
 export class PlanetStorageComponent implements OnInit {
 
   @Input() items: Item[];
+  @Input() discoveredItems: Set<string>;
 
   constructor() { }
 

@@ -1,7 +1,9 @@
 <h3>Storage</h3>
 <dl>
     <ng-container *ngFor="let item of items">
-        <dt>{{ item.name }}</dt>
-        <dd>{{ item.stored | bigNumber }} / {{ item.maxStorage | bigNumber }}</dd>
+        <ng-container *ngIf="discoveredItems.has(item.name)">
+            <dt>{{ item.name }}</dt>
+            <dd>{{ item.stored | bigNumber }} / {{ item.maxStorage | bigNumber }}</dd>
+        </ng-container>
     </ng-container>
 </dl>

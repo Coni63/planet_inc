@@ -6,12 +6,13 @@ import { BigNumber } from 'bignumber.js'
 })
 export class BigNumberPipe implements PipeTransform {
 
-  transform(value: BigNumber): string {
+  transform(value: BigNumber, sign: boolean = false): string {
     const threshold = new BigNumber(1000000000);
+    let s = (sign && value.isGreaterThanOrEqualTo(0)) ? "+" : "";
     if (value.isGreaterThanOrEqualTo(threshold)){
-      return value.toExponential(2);
+      return s + value.toExponential(2);
     } else {
-      return value.toFormat(0);
+      return s + value.toFormat(0);
     }
     
   }
