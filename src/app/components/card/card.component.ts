@@ -68,5 +68,4 @@ export class CardComponent implements OnInit {
     this.planet.upgrade_volume();
     event.stopPropagation();
   }
-
 }

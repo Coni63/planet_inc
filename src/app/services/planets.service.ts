@@ -17,7 +17,13 @@ export class PlanetsService {
 
   constructor() {
     this.planets = planets;
-    Object.keys(this.planets[0].production).forEach(item => this.discoveredItems.add(item));
+
+    Object.keys(this.planets).forEach(planetName => {
+      const planet = this.planets[planetName];
+      if (planet.discovered){
+        Object.keys(planet.production).forEach(item => this.discoveredItems.add(item));
+      }
+    });
 
     this.subscription = timer(0, 1000).subscribe(res => this.increment());
   }

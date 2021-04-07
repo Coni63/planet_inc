@@ -23,6 +23,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "bignumber.js": "^9.0.1",
+    "ng2-tooltip-directive": "^2.9.22",
     "rxjs": "~6.5.4",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

@@ -8,17 +8,18 @@
                 </div>
                 <div class="card__body">
                     <app-planet-production [items]="planet.production" [discoveredItems]="discoveredItems"></app-planet-production>
+                    <app-planet-consumption *ngIf="!planet.isEmptyObject(planet.consumption)" [items]="planet.consumption" [discoveredItems]="discoveredItems"></app-planet-consumption>
                     <app-planet-storage [items]="planet.storage"  [discoveredItems]="discoveredItems" [maxStorage]="planet.maxStorage"></app-planet-storage>
                 </div>
                 <div class="card__footer">
                     <div class="upgrade-block" *ngIf="planet.next">
-                        <button class="btn" (click)="upgrade_production($event)">
+                        <button class="btn" [tooltip]="tooltip_upgrade_production" content-type="template" placement="top" (click)="upgrade_production($event)" [class.btn-disabled]="!planet.can_upgrade(planet.cost_production)">
                             <fa-icon [icon]="production"></fa-icon>
                         </button>
-                        <button class="btn" (click)="upgrade_storage($event)">
+                        <button class="btn" [tooltip]="tooltip_upgrade_storage" content-type="template" placement="top" (click)="upgrade_storage($event)" [class.btn-disabled]="!planet.can_upgrade(planet.cost_storage)">
                             <fa-icon [icon]="storage"></fa-icon>
                         </button>
-                        <button class="btn" (click)="discover($event)" *ngIf="planet.next?.discovered === false">
+                        <button class="btn" [tooltip]="tooltip_discover" content-type="template" placement="top" (click)="discover($event)" *ngIf="planet.next?.discovered === false" [class.btn-disabled]="!planet.can_upgrade(planet.cost_discovery)">
                             <fa-icon [icon]="search"></fa-icon>
                         </button>
                     </div>
@@ -37,16 +38,16 @@
                 </div>
                 <div class="card__footer">
                     <div class="upgrade-block" *ngIf="planet.next">
-                        <button class="btn" (click)="upgrade_units($event)">
+                        <button class="btn" [tooltip]="tooltip_upgrade_units" content-type="template" placement="top" (click)="upgrade_units($event)" [class.btn-disabled]="!planet.can_upgrade(planet.cost_units)">
                             <fa-icon [icon]="production" ></fa-icon>
                         </button>
-                        <button class="btn" (click)="upgrade_speed($event)">
+                        <button class="btn" [tooltip]="tooltip_upgrade_speed" content-type="template" placement="top" (click)="upgrade_speed($event)" [class.btn-disabled]="!planet.can_upgrade(planet.cost_speed)">
                             <fa-icon [icon]="speed"></fa-icon>
                         </button>
-                        <button class="btn" (click)="upgrade_acceleration($event)">
+                        <button class="btn" [tooltip]="tooltip_upgrade_acceleration" content-type="template" placement="top" (click)="upgrade_acceleration($event)" [class.btn-disabled]="!planet.can_upgrade(planet.cost_acceleration)">
                             <fa-icon [icon]="acceleration"></fa-icon>
                         </button>
-                        <button class="btn" (click)="upgrade_volume($event)">
+                        <button class="btn" [tooltip]="tooltip_upgrade_volume" content-type="template" placement="top" (click)="upgrade_volume($event)" [class.btn-disabled]="!planet.can_upgrade(planet.cost_volume)">
                             <fa-icon [icon]="volume"></fa-icon>
                         </button>
                     </div>
@@ -55,3 +56,31 @@
         </div>
     </div>
 </div>
+
+<ng-template #tooltip_upgrade_production>
+    <app-tooltip-cost [costs]="planet.cost_production" [discoveredItems]="discoveredItems"></app-tooltip-cost>
+</ng-template>
+
+<ng-template #tooltip_upgrade_storage>
+    <app-tooltip-cost [costs]="planet.cost_storage" [discoveredItems]="discoveredItems"></app-tooltip-cost>
+</ng-template>
+
+<ng-template #tooltip_discover>
+    <app-tooltip-cost [costs]="planet.cost_discovery" [discoveredItems]="discoveredItems"></app-tooltip-cost>
+</ng-template>
+
+<ng-template #tooltip_upgrade_units>
+    <app-tooltip-cost [costs]="planet.cost_units" [discoveredItems]="discoveredItems"></app-tooltip-cost>
+</ng-template>
+
+<ng-template #tooltip_upgrade_speed>
+    <app-tooltip-cost [costs]="planet.cost_speed" [discoveredItems]="discoveredItems"></app-tooltip-cost>
+</ng-template>
+
+<ng-template #tooltip_upgrade_acceleration>
+    <app-tooltip-cost [costs]="planet.cost_acceleration" [discoveredItems]="discoveredItems"></app-tooltip-cost>
+</ng-template>
+
+<ng-template #tooltip_upgrade_volume>
+    <app-tooltip-cost [costs]="planet.cost_volume" [discoveredItems]="discoveredItems"></app-tooltip-cost>
+</ng-template>

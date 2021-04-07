@@ -1,0 +1,12 @@
+<dl>
+    <ng-container *ngFor="let item of costs | keyvalue">
+        <ng-container *ngIf="discoveredItems.has(item.key)">
+            <dt>{{ item.key }}: &nbsp;</dt>
+            <dd>{{ item.value.currentCost | bigNumber }}</dd>
+        </ng-container>
+        <ng-container *ngIf="!discoveredItems.has(item.key)">
+            <dt>Unknown Element: &nbsp;</dt>
+            <dd>X</dd>
+        </ng-container>
+    </ng-container>
+</dl>

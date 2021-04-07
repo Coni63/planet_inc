@@ -13,7 +13,7 @@ export class Fleet {
     constructor(planet_id: number){
         this.planet_id = planet_id;
         this.count = new BigNumber(1);
-        this.speed = new BigNumber(100);
+        this.speed = new BigNumber(1);
         this.acceleration = new BigNumber(1);
         this.storage = new BigNumber(32);
         this.setTimes();

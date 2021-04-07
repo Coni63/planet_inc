@@ -117,11 +117,11 @@ $light: #F3F3F3;
   align-items: center;
   // justify-items: flex-end;
   cursor: pointer;
+  color: green;
 }
 
-/* Darker background on mouse-over */
-.btn:hover {
-  background-color: RoyalBlue;
+.btn-disabled {
+  color: Red;
 }
 
 .upgrade-block {
