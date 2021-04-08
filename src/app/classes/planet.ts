@@ -94,7 +94,7 @@ export class Planet {
         }
     }
 
-    private pay(cost: {[key: string] : Cost}){
+    pay(cost: {[key: string] : Cost}){
         Object.keys(cost).forEach(key => {
             this.storage[key] = this.storage[key].minus(cost[key].currentCost);
             cost[key].upgrade();

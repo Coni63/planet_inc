@@ -35,7 +35,10 @@ export class CardComponent implements OnInit {
   }
 
   discover(event){
-    this._planetService.discover(this.planet);
+    if (this.planet.can_upgrade(this.planet.cost_discovery)){ // I had to put this code here bacause Planet does not have dependancy injection
+      this._planetService.discover(this.planet);
+      this.planet.pay(this.planet.cost_discovery);
+    }
     event.stopPropagation();
   }
 

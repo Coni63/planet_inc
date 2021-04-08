@@ -28,10 +28,10 @@ export class PlanetsService {
     this.subscription = timer(0, 1000).subscribe(res => this.increment());
   }
 
-  discover(planet: Planet){
-    if (!planet.next.discovered){
-      planet.next.discovered = true;
-      Object.keys(planet.next.production).forEach(item => this.discoveredItems.add(item));
+  discover(currentPlanet: Planet){
+    if (!currentPlanet.next.discovered){
+      currentPlanet.next.discovered = true;
+      Object.keys(currentPlanet.next.production).forEach(item => this.discoveredItems.add(item));
     }
   }
 

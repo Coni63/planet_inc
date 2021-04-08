@@ -61,11 +61,27 @@ export class Fleet {
     }
 
     private _getRessourcesFrom(planet: Planet){
-
+        const total_space = this.count.multipliedBy(this.volume);
+        Object.keys(planet.production).forEach(key => {   // for now the planet will only produce 1 element
+            if (planet.storage[key].isGreaterThanOrEqualTo(total_space) ){
+                this.stored[key] = total_space;
+                planet.storage[key] = planet.storage[key].minus(total_space);
+            } else {
+                this.stored[key] = planet.storage[key];
+                planet.storage[key] = new BigNumber(0);
+            }
+        });
     }
 
     private _unloadRessources(){
-
+        Object.keys(this.stored).forEach(key => {   // for now the planet will only produce 1 element
+            if (this.planet.storage[key].plus(this.stored[key]).isGreaterThanOrEqualTo(this.planet.maxStorage) ){
+                this.planet.storage[key] = new BigNumber(this.planet.maxStorage);
+            } else {
+                this.planet.storage[key] = this.planet.storage[key].plus(this.stored[key])
+            }
+            this.stored = {};
+        });
     }
 
     upgrade_units(){
