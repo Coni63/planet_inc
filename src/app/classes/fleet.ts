@@ -1,30 +1,71 @@
 import BigNumber from 'bignumber.js';
 import { distances } from '../data/factors';
-
+import { interval, timer } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Planet } from './planet';
 
 export class Fleet {
-    planet_id: number;
+    planet: Planet;
     count: BigNumber;
-    storage: BigNumber;
+    volume: BigNumber;
+    stored: { [key : string] : BigNumber };
     speed: BigNumber;
     acceleration: BigNumber;
-    times: BigNumber[] = []
+    times: BigNumber[] = [];
+    dists: BigNumber[] = [];
+    isTraveling: boolean = false;
+    isForward: boolean = false;
+    remainingTime: BigNumber;
 
-    constructor(planet_id: number){
-        this.planet_id = planet_id;
+    constructor(planet: Planet){
+        this.planet = planet;
         this.count = new BigNumber(1);
         this.speed = new BigNumber(1);
+        this.stored = {};
         this.acceleration = new BigNumber(1);
-        this.storage = new BigNumber(32);
+        this.volume = new BigNumber(32);
+        this.dists = distances[this.planet.id];
         this.setTimes();
     }
 
     setTimes(){
         this.times = [];
-        const distFromMe = distances[this.planet_id];
-        for (let i=0; i<distFromMe.length; i++){
-            this.times.push(this._timeForDistance(distFromMe[i]))
+        for (let i=0; i<this.dists.length; i++){
+            this.times.push(this._timeForDistance(this.dists[i]))
         }
+    }
+
+    sendTo(target_planet: Planet){
+        let ms = 1000 * this.times[target_planet.id].toNumber();
+        this.isTraveling = true;
+        this.isForward = true;
+        this.remainingTime = this.times[target_planet.id].multipliedBy(2);
+
+        const source = interval(1000);
+        const timer_1$ = timer(ms);
+        const timer_2$ = timer(2*ms);  // forward + backward
+        
+        source.pipe(takeUntil(timer_2$)).subscribe(() => {
+            this.remainingTime = this.remainingTime.minus(1);
+        });
+
+        timer_1$.subscribe(() => {
+            this.isForward = false;
+            this._getRessourcesFrom(target_planet)
+
+            timer_1$.subscribe(() => {
+                this._unloadRessources()
+                this.isTraveling = false;
+            });
+        });
+    }
+
+    private _getRessourcesFrom(planet: Planet){
+
+    }
+
+    private _unloadRessources(){
+
     }
 
     upgrade_units(){
@@ -42,7 +83,7 @@ export class Fleet {
     }
 
     upgrade_volume(){
-        this.storage = this.storage.multipliedBy(2);
+        this.volume = this.volume.multipliedBy(2);
     }
 
     private _timeForDistance(distance: BigNumber): BigNumber {

@@ -40,6 +40,7 @@ import { PlanetConsumptionComponent } from './components/planet-consumption/plan
   providers: [
     StorageService,
     PlanetsService,
+    BigNumberPipe
   ],
   bootstrap: [AppComponent]
 })

@@ -1,9 +1,12 @@
 <h3>Travel</h3>
 <dl>
     <ng-container *ngFor="let planet of planets; let index = index">
-        <ng-container *ngIf="(index != fleet.planet_id) && (planet.discovered)">
+        <ng-container *ngIf="(index != fleet.planet.id) && (planet.discovered)">
             <dt>{{ planet.name }}</dt>
-            <dd>{{ fleet.times[index] | bigNumber }} s</dd>
+            <dd>
+                {{ fleet.times[index] | bigNumber }} s ({{ fleet.dists[index] | bigNumber}} m)
+                <input type="button" [value]="getButtonText()" (click)="sendTo($event, planet)" [disabled]="isTraveling()" />
+            </dd>
         </ng-container>
     </ng-container>
 </dl>

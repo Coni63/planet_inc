@@ -31,7 +31,7 @@ export class Planet {
         this.storage = {};
         this.maxStorage = new BigNumber(32);
         this.discovered = false;
-        this.fleet = new Fleet(this.id);
+        this.fleet = new Fleet(this);
     }
 
     increment(){
@@ -55,37 +55,50 @@ export class Planet {
             Object.keys(this.production).forEach(key => {
                 this.production[key] = this.production[key].multipliedBy(2);
             });
-            Object.keys(this.cost_production).forEach(key => {
-                this.storage[key] = this.storage[key].minus(this.cost_production[key].currentCost);
-                this.cost_production[key].upgrade();
-            });
+            this.pay(this.cost_production);
         }
     }
 
     upgrade_storage(){
         if (this.can_upgrade(this.cost_storage)){
             this.maxStorage = this.maxStorage.multipliedBy(2);
-            Object.keys(this.cost_storage).forEach(key => {
-                this.storage[key] = this.storage[key].minus(this.cost_storage[key].currentCost);
-                this.cost_storage[key].upgrade();
-            });
+            this.pay(this.cost_storage);
         }
     }
 
     upgrade_units(){
-        this.fleet.upgrade_units();
+        if (this.can_upgrade(this.cost_units)){
+            this.fleet.upgrade_units();
+            this.pay(this.cost_units);
+        }
     }
 
     upgrade_speed(){
-        this.fleet.upgrade_speed();
+        if (this.can_upgrade(this.cost_speed)){
+            this.fleet.upgrade_speed();
+            this.pay(this.cost_speed);
+        }
     }
 
     upgrade_acceleration(){
-        this.fleet.upgrade_acceleration();
+        if (this.can_upgrade(this.cost_acceleration)){
+            this.fleet.upgrade_acceleration();
+            this.pay(this.cost_acceleration);
+        }
     }
 
     upgrade_volume(){
-        this.fleet.upgrade_volume();
+        if (this.can_upgrade(this.cost_volume)){
+            this.fleet.upgrade_volume();
+            this.pay(this.cost_volume);
+        }
+    }
+
+    private pay(cost: {[key: string] : Cost}){
+        Object.keys(cost).forEach(key => {
+            this.storage[key] = this.storage[key].minus(cost[key].currentCost);
+            cost[key].upgrade();
+        });
     }
 
     isEmptyObject(obj) {
