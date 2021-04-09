@@ -3,7 +3,7 @@
     <ng-container *ngFor="let item of items | keyvalue">
         <ng-container *ngIf="discoveredItems.has(item.key)">
             <dt>{{ item.key }}</dt>
-            <dd>{{ item.value | bigNumber:true }}</dd>
+            <dd>-{{ item.value | bigNumber:false }}</dd>
         </ng-container>
     </ng-container>
 </dl>

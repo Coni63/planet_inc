@@ -35,10 +35,30 @@ export class Planet {
     }
 
     increment(){
-        Object.keys(this.production).forEach(key => {
-            let next_value = this.storage[key].plus(this.production[key]);
-            this.storage[key] = next_value.isGreaterThanOrEqualTo(this.maxStorage) ? this.maxStorage : next_value;
+        if (this.can_increment()) {
+            Object.keys(this.production).forEach(key => {
+                let next_value = this.storage[key].plus(this.production[key]);
+                this.storage[key] = next_value.isGreaterThanOrEqualTo(this.maxStorage) ? this.maxStorage : next_value;
+            });
+
+            Object.keys(this.consumption).forEach(key => {
+                this.storage[key] = this.storage[key].minus(this.consumption[key]);
+            });
+        }
+    }
+
+    can_increment(): boolean{
+        if (this.isEmptyObject(this.consumption)){
+            return true;
+        }
+
+        let ans = true;
+        Object.keys(this.consumption).forEach(key => {
+            if (this.storage[key].isLessThan(this.consumption[key])){
+                ans = false;
+            }
         });
+        return ans;
     }
 
     can_upgrade(related_cost){

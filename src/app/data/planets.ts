@@ -28,7 +28,11 @@ alpha.production = {
 };
 
 beta.production = {
-  "b" : new BigNumber(1)
+  "b" : new BigNumber(10)
+};
+
+beta.consumption = {
+  "a" : new BigNumber(5)
 };
 
 gamma.production = {
