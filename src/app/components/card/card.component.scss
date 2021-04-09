@@ -85,8 +85,10 @@ $light: #F3F3F3;
 }
 
 .card__header {
-  position: relative;
-  padding: 20px 20px 20px;
+  position: absolute;
+  top:0;
+  height: 90px;
+  width: 100%;
   display: flex;
   flex-wrap: nowrap;
   column-gap: 1em;
@@ -94,7 +96,22 @@ $light: #F3F3F3;
 }
 
 .card__body {
-  padding: 30px;
+  position: absolute;
+  top: 90px;
+  bottom: 50px;
+  left: 0px;
+  right: 0px;
+  padding: 10px 30px 10px 30px;
+
+  display: flex;
+  flex-direction: column;
+
+  .shrink {
+    flex-shrink: 1;
+  }
+  .grow {
+    flex-grow: 1;
+  }
 }
 
 .card__footer {
@@ -115,7 +132,6 @@ $light: #F3F3F3;
   color: $light;
   display: flex;
   align-items: center;
-  // justify-items: flex-end;
   cursor: pointer;
   color: green;
 }
@@ -136,7 +152,6 @@ $light: #F3F3F3;
   direction: ltr;
 }
 
-
 .card__header .planet-name {
   color: #000;
   font-size: 32px;
@@ -152,6 +167,7 @@ $light: #F3F3F3;
   object-fit: cover;
   width: 50px;
   height: 50px;
+  margin-left: 20px;
   border-radius: 50%;
   z-index: 2;
 }

@@ -7,9 +7,15 @@
                     <div class="planet-name">{{ planet.name }}</div>
                 </div>
                 <div class="card__body">
-                    <app-planet-production [items]="planet.production" [discoveredItems]="discoveredItems"></app-planet-production>
-                    <app-planet-consumption *ngIf="!planet.isEmptyObject(planet.consumption)" [items]="planet.consumption" [discoveredItems]="discoveredItems"></app-planet-consumption>
-                    <app-planet-storage [items]="planet.storage"  [discoveredItems]="discoveredItems" [maxStorage]="planet.maxStorage"></app-planet-storage>
+                    <div class="shrink">
+                        <app-planet-production [items]="planet.production" [discoveredItems]="discoveredItems"></app-planet-production>
+                    </div>
+                    <div class="shrink">
+                        <app-planet-consumption *ngIf="!planet.isEmptyObject(planet.consumption)" [items]="planet.consumption" [discoveredItems]="discoveredItems"></app-planet-consumption>
+                    </div>
+                    <div class="grow">
+                        <app-planet-storage [items]="planet.storage"  [discoveredItems]="discoveredItems" [maxStorage]="planet.maxStorage"></app-planet-storage>
+                    </div>
                 </div>
                 <div class="card__footer">
                     <div class="upgrade-block" *ngIf="planet.next">

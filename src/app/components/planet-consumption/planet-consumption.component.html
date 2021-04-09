@@ -1,9 +1,11 @@
-<h3>Consumption</h3>
-<dl>
-    <ng-container *ngFor="let item of items | keyvalue">
-        <ng-container *ngIf="discoveredItems.has(item.key)">
-            <dt>{{ item.key }}</dt>
-            <dd>-{{ item.value | bigNumber:false }}</dd>
+<div class="container">
+    <h3>Consumption</h3>
+    <dl>
+        <ng-container *ngFor="let item of items | keyvalue">
+            <ng-container *ngIf="discoveredItems.has(item.key)">
+                <dt>{{ item.key }}</dt>
+                <dd>-{{ item.value | bigNumber:false }}</dd>
+            </ng-container>
         </ng-container>
-    </ng-container>
-</dl>
+    </dl>
+</div>

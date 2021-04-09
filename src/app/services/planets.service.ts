@@ -25,6 +25,29 @@ export class PlanetsService {
       }
     });
 
+    this.discoveredItems.add("c");
+    this.discoveredItems.add("d");
+    this.discoveredItems.add("e");
+    this.discoveredItems.add("f");
+    this.discoveredItems.add("g");
+    this.discoveredItems.add("h");
+    this.discoveredItems.add("i");
+    this.discoveredItems.add("j");
+    this.discoveredItems.add("k");
+    this.discoveredItems.add("l");
+    this.discoveredItems.add("m");
+    this.discoveredItems.add("n");
+    this.discoveredItems.add("o");
+    this.discoveredItems.add("p");
+    this.discoveredItems.add("q");
+    this.discoveredItems.add("r");
+    this.discoveredItems.add("s");
+    this.discoveredItems.add("t");
+    this.discoveredItems.add("u");
+    this.discoveredItems.add("v");
+    this.discoveredItems.add("w");
+    this.discoveredItems.add("x");
+
     this.subscription = timer(0, 1000).subscribe(res => this.increment());
   }
 

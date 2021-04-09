@@ -13,6 +13,21 @@ function defaultStorage(): {[key: string]: BigNumber} {
     "g" : new BigNumber(0),
     "h" : new BigNumber(0),
     "i" : new BigNumber(0),
+    "j" : new BigNumber(0),
+    "k" : new BigNumber(0),
+    "l" : new BigNumber(0),
+    "m" : new BigNumber(0),
+    "n" : new BigNumber(0),
+    "o" : new BigNumber(0),
+    "p" : new BigNumber(0),
+    "q" : new BigNumber(0),
+    "r" : new BigNumber(0),
+    "s" : new BigNumber(0),
+    "t" : new BigNumber(0),
+    "u" : new BigNumber(0),
+    "v" : new BigNumber(0),
+    "w" : new BigNumber(0),
+    "x" : new BigNumber(0),
   };
 }
 
@@ -32,7 +47,11 @@ beta.production = {
 };
 
 beta.consumption = {
-  "a" : new BigNumber(5)
+  "a" : new BigNumber(5),
+  "d" : new BigNumber(5),
+  "e" : new BigNumber(5),
+  "f" : new BigNumber(5),
+  "g" : new BigNumber(5),
 };
 
 gamma.production = {

@@ -1,9 +1,15 @@
-<h3>Storage</h3>
-<dl>
-    <ng-container *ngFor="let item of items | keyvalue">
-        <ng-container *ngIf="discoveredItems.has(item.key)">
-            <dt>{{ item.key }}</dt>
-            <dd>{{ item.value | bigNumber }} / {{ maxStorage | bigNumber }}</dd>
-        </ng-container>
-    </ng-container>
-</dl>
+<div class="container">
+    <div class="outer">
+        <h3>Storage</h3>
+        <div class="inner">
+            <dl>
+                <ng-container *ngFor="let item of items | keyvalue">
+                    <ng-container *ngIf="discoveredItems.has(item.key)">
+                        <dt>{{ item.key }}</dt>
+                        <dd>{{ item.value | bigNumber }} / {{ maxStorage | bigNumber }}</dd>
+                    </ng-container>
+                </ng-container>
+            </dl>
+        </div>
+    </div>
+</div>
