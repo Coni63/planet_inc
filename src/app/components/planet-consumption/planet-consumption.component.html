@@ -1,5 +1,6 @@
 <div class="container">
     <h3>Consumption</h3>
+    <!--  tooltip="To produce the items, this planet requires the following ressources" placement="top" -->
     <dl>
         <ng-container *ngFor="let item of items | keyvalue">
             <ng-container *ngIf="discoveredItems.has(item.key)">

@@ -11,6 +11,8 @@ export class TooltipCostComponent implements OnInit {
 
   @Input() costs: { [key : string] : Cost };
   @Input() discoveredItems: Set<string>;
+  @Input() title: string = "";
+  @Input() description: string = "";
 
   constructor() { }
 

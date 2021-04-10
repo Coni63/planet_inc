@@ -25,6 +25,8 @@ export class PlanetsService {
       }
     });
 
+    this.discoveredItems.add("a");
+    this.discoveredItems.add("b");
     this.discoveredItems.add("c");
     this.discoveredItems.add("d");
     this.discoveredItems.add("e");
@@ -47,6 +49,8 @@ export class PlanetsService {
     this.discoveredItems.add("v");
     this.discoveredItems.add("w");
     this.discoveredItems.add("x");
+    this.discoveredItems.add("y");
+    this.discoveredItems.add("z");
 
     this.subscription = timer(0, 1000).subscribe(res => this.increment());
   }

@@ -64,29 +64,64 @@
 </div>
 
 <ng-template #tooltip_upgrade_production>
-    <app-tooltip-cost [costs]="planet.cost_production" [discoveredItems]="discoveredItems"></app-tooltip-cost>
+    <app-tooltip-cost 
+    [costs]="planet.cost_production" 
+    [discoveredItems]="discoveredItems"
+    title = "Upgrade production"
+    description = "Multiply your U/s by 2"
+    ></app-tooltip-cost>
 </ng-template>
 
 <ng-template #tooltip_upgrade_storage>
-    <app-tooltip-cost [costs]="planet.cost_storage" [discoveredItems]="discoveredItems"></app-tooltip-cost>
+    <app-tooltip-cost 
+    [costs]="planet.cost_storage" 
+    [discoveredItems]="discoveredItems"
+    title = "Upgrade storage"
+    description = "Multiply your storage by 2"
+    ></app-tooltip-cost>
 </ng-template>
 
 <ng-template #tooltip_discover>
-    <app-tooltip-cost [costs]="planet.cost_discovery" [discoveredItems]="discoveredItems"></app-tooltip-cost>
+    <app-tooltip-cost 
+    [costs]="planet.cost_discovery" 
+    [discoveredItems]="discoveredItems"
+    title = "Discovery"
+    description = "???"
+    ></app-tooltip-cost>
 </ng-template>
 
 <ng-template #tooltip_upgrade_units>
-    <app-tooltip-cost [costs]="planet.cost_units" [discoveredItems]="discoveredItems"></app-tooltip-cost>
+    <app-tooltip-cost 
+    [costs]="planet.cost_units" 
+    [discoveredItems]="discoveredItems"
+    title = "Increase fleet size"
+    description = "Purchase a new vessel"
+    ></app-tooltip-cost>
 </ng-template>
 
 <ng-template #tooltip_upgrade_speed>
-    <app-tooltip-cost [costs]="planet.cost_speed" [discoveredItems]="discoveredItems"></app-tooltip-cost>
+    <app-tooltip-cost 
+    [costs]="planet.cost_speed" 
+    [discoveredItems]="discoveredItems"
+    title = "Upgrade speed"
+    description = "The max speed of your fleet is doubled"
+    ></app-tooltip-cost>
 </ng-template>
 
 <ng-template #tooltip_upgrade_acceleration>
-    <app-tooltip-cost [costs]="planet.cost_acceleration" [discoveredItems]="discoveredItems"></app-tooltip-cost>
+    <app-tooltip-cost 
+    [costs]="planet.cost_acceleration" 
+    [discoveredItems]="discoveredItems"
+    title = "Upgrade acceleration"
+    description = "The acceleration of your fleet is doubled"
+    ></app-tooltip-cost>
 </ng-template>
 
 <ng-template #tooltip_upgrade_volume>
-    <app-tooltip-cost [costs]="planet.cost_volume" [discoveredItems]="discoveredItems"></app-tooltip-cost>
+    <app-tooltip-cost 
+    [costs]="planet.cost_volume" 
+    [discoveredItems]="discoveredItems"
+    title = "Upgrade volume"
+    description = "The space on each fleet is doubled"
+    ></app-tooltip-cost>
 </ng-template>

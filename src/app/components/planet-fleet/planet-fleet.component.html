@@ -1,12 +1,13 @@
-<h3>Fleet</h3>
-<dl>
-    <dt># vessels</dt>
-    <dd>{{ fleet.count | bigNumber }}</dd>
-    <dt>Speed</dt>
-    <dd>{{ fleet.speed | bigNumber }} m/s</dd>
-    <dt>Acceleration</dt>
-    <dd>{{ fleet.acceleration | bigNumber }} m/s²</dd>
-    <dt>Storage</dt>
-    <dd>{{ fleet.volume | bigNumber }} items</dd>
-</dl>
-
+<div class="container">
+    <h3>Fleet</h3>
+    <dl>
+        <dt># vessels</dt>
+        <dd>{{ fleet.count | bigNumber }}</dd>
+        <dt>Speed</dt>
+        <dd>{{ fleet.speed | bigNumber }} m/s</dd>
+        <dt>Acceleration</dt>
+        <dd>{{ fleet.acceleration | bigNumber }} m/s²</dd>
+        <dt>Storage</dt>
+        <dd>{{ fleet.volume | bigNumber }} items</dd>
+    </dl>    
+</div>

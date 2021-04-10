@@ -1,5 +1,6 @@
 <div class="container">
     <h3>Production</h3>
+    <!--  tooltip="Those items will be produce each seconds" placement="top" -->
     <dl>
         <ng-container *ngFor="let item of items | keyvalue">
             <ng-container *ngIf="discoveredItems.has(item.key)">
