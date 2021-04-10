@@ -93,7 +93,7 @@ function defaultStorage(): {[key: string]: BigNumber} {
 const alpha = new Planet(planetName.a, 0, "planet-blue");
 const beta = new Planet(planetName.b, 1, "planet-yellow");
 const gamma = new Planet(planetName.c, 2,  "planet-green");
-const blackhole = new Planet(planetName.d, 3, "black-hole");
+export const blackhole = new Planet(planetName.d, 3, "black-hole");
 
 // set production
 alpha.production = {
@@ -206,7 +206,7 @@ alpha.next = beta;
 beta.next = gamma;
 gamma.next = blackhole;
 
-export var planets = [
+export const planets = [
   alpha,
   beta,
   gamma,

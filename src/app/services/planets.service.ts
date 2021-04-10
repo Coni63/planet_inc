@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { timer, Subscription } from 'rxjs';
 
 import { Planet } from '../classes/planet';
-import { planets } from '../data/planets';
+import { planets, blackhole } from '../data/planets';
+import BigNumber from 'bignumber.js';
 // https://www.npmjs.com/package/bignumber.js
 
 @Injectable({
@@ -12,11 +13,15 @@ export class PlanetsService {
 
   intervalId
   planets: Planet[];
+  blackhole: Planet;
+  factor: BigNumber;
   discoveredItems: Set<string> = new Set<string>();
   subscription: Subscription;
 
   constructor() {
     this.planets = planets;
+    this.blackhole = blackhole;
+    this.factor = new BigNumber(2);
 
     Object.keys(this.planets).forEach(planetName => {
       const planet = this.planets[planetName];
@@ -52,7 +57,8 @@ export class PlanetsService {
     this.discoveredItems.add("y");
     this.discoveredItems.add("z");
 
-    this.subscription = timer(0, 1000).subscribe(res => this.increment());
+    this.subscription = timer(1000, 1000).subscribe(res => this.increment());
+    this.subscription = timer(10000, 10000).subscribe(res => this.incrementBlackHole());
   }
 
   discover(currentPlanet: Planet){
@@ -68,6 +74,14 @@ export class PlanetsService {
         planet.increment();
       } 
     });
+  }
+
+  incrementBlackHole(){
+    this.blackhole.incrementBlackhole(this.factor);
+    if (this.blackhole.isOver()){
+      // TODO: add message 
+      console.log("over");
+    }
   }
 
 }

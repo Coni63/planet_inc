@@ -32,6 +32,14 @@ export class Planet {
         this.maxStorage = new BigNumber(32);
         this.discovered = false;
         this.fleet = new Fleet(this);
+
+        this.cost_production= {};
+        this.cost_storage= {};
+        this.cost_units= {};
+        this.cost_speed= {};
+        this.cost_acceleration= {};
+        this.cost_volume= {};
+        this.cost_discovery= {};
     }
 
     increment(){
@@ -62,6 +70,10 @@ export class Planet {
     }
 
     can_upgrade(related_cost){
+        if (!related_cost || this.isEmptyObject(related_cost)){
+            return false;
+        }
+
         for (let key of Object.keys(related_cost)) {
             if (this.storage[key].isLessThan(related_cost[key].currentCost)){
                 return false;
@@ -123,6 +135,21 @@ export class Planet {
 
     isEmptyObject(obj) {
         return (obj && (Object.keys(obj).length === 0));
+    }
+
+    /* only for the blachole */
+    incrementBlackhole(factor: BigNumber){
+        this.maxStorage = this.maxStorage.multipliedBy(factor);
+    }
+
+    isOver(){
+        let ans = true;
+        Object.keys(this.storage).forEach(key => {
+            if (this.storage[key].isLessThan(this.maxStorage)){
+                ans = false;
+            }
+        });
+        return ans;
     }
 
 }

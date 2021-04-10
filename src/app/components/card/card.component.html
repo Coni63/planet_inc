@@ -8,24 +8,24 @@
                 </div>
                 <div class="card__body">
                     <div class="shrink">
-                        <app-planet-production [items]="planet.production" [discoveredItems]="discoveredItems"></app-planet-production>
+                        <app-planet-production *ngIf="!planet.isEmptyObject(planet.production)" [items]="planet.production" [discoveredItems]="discoveredItems"></app-planet-production>
                     </div>
                     <div class="shrink">
                         <app-planet-consumption *ngIf="!planet.isEmptyObject(planet.consumption)" [items]="planet.consumption" [discoveredItems]="discoveredItems"></app-planet-consumption>
                     </div>
                     <div class="grow">
-                        <app-planet-storage [items]="planet.storage"  [discoveredItems]="discoveredItems" [maxStorage]="planet.maxStorage"></app-planet-storage>
+                        <app-planet-storage *ngIf="!planet.isEmptyObject(planet.storage)" [items]="planet.storage"  [discoveredItems]="discoveredItems" [maxStorage]="planet.maxStorage"></app-planet-storage>
                     </div>
                 </div>
                 <div class="card__footer">
-                    <div class="upgrade-block" *ngIf="planet.next">
-                        <button class="btn" [tooltip]="tooltip_upgrade_production" content-type="template" placement="top" (click)="upgrade_production($event)" [class.btn-disabled]="!planet.can_upgrade(planet.cost_production)">
+                    <div class="upgrade-block">
+                        <button class="btn" *ngIf="!planet.isEmptyObject(planet.cost_production)" [tooltip]="tooltip_upgrade_production" content-type="template" placement="top" (click)="upgrade_production($event)" [class.btn-disabled]="!planet.can_upgrade(planet.cost_production)">
                             <fa-icon [icon]="production"></fa-icon>
                         </button>
-                        <button class="btn" [tooltip]="tooltip_upgrade_storage" content-type="template" placement="top" (click)="upgrade_storage($event)" [class.btn-disabled]="!planet.can_upgrade(planet.cost_storage)">
+                        <button class="btn" *ngIf="!planet.isEmptyObject(planet.cost_storage)" [tooltip]="tooltip_upgrade_storage" content-type="template" placement="top" (click)="upgrade_storage($event)" [class.btn-disabled]="!planet.can_upgrade(planet.cost_storage)">
                             <fa-icon [icon]="storage"></fa-icon>
                         </button>
-                        <button class="btn" [tooltip]="tooltip_discover" content-type="template" placement="top" (click)="discover($event)" *ngIf="planet.next?.discovered === false" [class.btn-disabled]="!planet.can_upgrade(planet.cost_discovery)">
+                        <button class="btn" *ngIf="planet.next?.discovered === false"  [tooltip]="tooltip_discover" content-type="template" placement="top" (click)="discover($event)" [class.btn-disabled]="!planet.can_upgrade(planet.cost_discovery)">
                             <fa-icon [icon]="search"></fa-icon>
                         </button>
                     </div>
@@ -39,11 +39,13 @@
                     <div class="planet-name">{{ planet.name }}</div>
                 </div>
                 <div class="card__body">
-                    <app-planet-fleet [fleet]="planet.fleet"></app-planet-fleet>
-                    <app-planet-travel [fleet]="planet.fleet" [planets]="planets"></app-planet-travel>
+                    <ng-container *ngIf="!planet.isEmptyObject(planet.storage)" >
+                        <app-planet-fleet [fleet]="planet.fleet"></app-planet-fleet>
+                        <app-planet-travel [fleet]="planet.fleet" [planets]="planets"></app-planet-travel>
+                    </ng-container>
                 </div>
                 <div class="card__footer">
-                    <div class="upgrade-block" *ngIf="planet.next">
+                    <div class="upgrade-block">
                         <button class="btn" [tooltip]="tooltip_upgrade_units" content-type="template" placement="top" (click)="upgrade_units($event)" [class.btn-disabled]="!planet.can_upgrade(planet.cost_units)">
                             <fa-icon [icon]="production" ></fa-icon>
                         </button>
