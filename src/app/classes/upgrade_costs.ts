@@ -1,4 +1,5 @@
 import BigNumber from 'bignumber.js';
+import { ICostState } from './interfaces';
 
 export class Cost {
     a0: BigNumber;
@@ -30,5 +31,16 @@ export class Cost {
         this.level++;
     }
 
+    toJSON(): ICostState {
+        return {
+            currentCost: this.currentCost.toFixed(),
+            level: this.level,
+        }
+    }
     
+    loadJSON(data: ICostState) {
+        this.level = data.level;
+        this.currentCost = new BigNumber(data.currentCost);
+    }
+
 }

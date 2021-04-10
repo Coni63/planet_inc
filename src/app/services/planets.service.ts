@@ -30,35 +30,38 @@ export class PlanetsService {
       }
     });
 
-    this.discoveredItems.add("a");
-    this.discoveredItems.add("b");
-    this.discoveredItems.add("c");
-    this.discoveredItems.add("d");
-    this.discoveredItems.add("e");
-    this.discoveredItems.add("f");
-    this.discoveredItems.add("g");
-    this.discoveredItems.add("h");
-    this.discoveredItems.add("i");
-    this.discoveredItems.add("j");
-    this.discoveredItems.add("k");
-    this.discoveredItems.add("l");
-    this.discoveredItems.add("m");
-    this.discoveredItems.add("n");
-    this.discoveredItems.add("o");
-    this.discoveredItems.add("p");
-    this.discoveredItems.add("q");
-    this.discoveredItems.add("r");
-    this.discoveredItems.add("s");
-    this.discoveredItems.add("t");
-    this.discoveredItems.add("u");
-    this.discoveredItems.add("v");
-    this.discoveredItems.add("w");
-    this.discoveredItems.add("x");
-    this.discoveredItems.add("y");
-    this.discoveredItems.add("z");
+    this.load();
 
     this.subscription = timer(1000, 1000).subscribe(res => this.increment());
     this.subscription = timer(10000, 10000).subscribe(res => this.incrementBlackHole());
+  }
+
+  load(){
+    let game_encoded = localStorage.getItem("game");
+    if (game_encoded){
+      let game = JSON.parse(atob(game_encoded));
+      game.forEach(data => {
+        let id = data["id"];
+        this.planets[id].loadJSON(data);
+      }) 
+    }
+  }
+
+  save(){
+    let game = this.stringifiedPlanet();
+    let game_encoded = btoa(game);
+    localStorage.setItem("game", game_encoded)
+  }
+
+  private stringifiedPlanet(): string {
+    let status = [];
+    this.planets.forEach(planet => {
+      if (planet.discovered) {
+        status.push(planet.toJSON());
+      }
+    });
+    console.log(status);
+    return JSON.stringify(status);
   }
 
   discover(currentPlanet: Planet){

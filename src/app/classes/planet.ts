@@ -1,6 +1,7 @@
 import { BigNumber } from 'bignumber.js';
 import { Fleet } from './fleet';
 import { Cost } from './upgrade_costs';
+import { IPlanetState, ICostState } from './interfaces';
 
 export class Planet {
     id: number;
@@ -135,6 +136,73 @@ export class Planet {
 
     isEmptyObject(obj) {
         return (obj && (Object.keys(obj).length === 0));
+    }
+
+    loadJSON(data: IPlanetState){
+        this.production = this.deserializeProd(data.production);
+        this.consumption = this.deserializeProd(data.consumption);
+        this.storage = this.deserializeProd(data.storage);
+        this.maxStorage = new BigNumber(data.maxStorage);
+        this.discovered = data.discovered;
+        this.fleet.loadJSON(data.fleet);
+        this.cost_production = this.deserializeCost(data.cost_production);
+        this.cost_storage = this.deserializeCost(data.cost_storage);
+        this.cost_units = this.deserializeCost(data.cost_units);
+        this.cost_speed = this.deserializeCost(data.cost_speed);
+        this.cost_acceleration = this.deserializeCost(data.cost_acceleration);
+        this.cost_volume = this.deserializeCost(data.cost_volume);
+        this.cost_discovery = this.deserializeCost(data.cost_discovery);
+    }
+
+    toJSON(): IPlanetState {
+        return {
+            id: this.id,
+            production: this.serializeProd(this.production),
+            consumption: this.serializeProd(this.consumption),
+            storage: this.serializeProd(this.storage),
+            maxStorage: this.maxStorage.toFixed(),
+            discovered: this.discovered,
+            fleet: this.fleet.toJSON(),
+            cost_production: this.serializeCost(this.cost_production),  // number will be the level
+            cost_storage: this.serializeCost(this.cost_production),
+            cost_units: this.serializeCost(this.cost_units),
+            cost_speed: this.serializeCost(this.cost_speed),
+            cost_acceleration: this.serializeCost(this.cost_acceleration),
+            cost_volume: this.serializeCost(this.cost_volume),
+            cost_discovery: this.serializeCost(this.cost_discovery)
+        };
+    }
+
+    private serializeCost(obj: {[key: string] : Cost}): {[key: string] : ICostState} {
+        let ans: {[key: string] : ICostState} = {};
+        Object.keys(obj).forEach(key => {
+            ans[key] = obj[key].toJSON();
+        });
+        return ans;
+    }
+
+    private deserializeCost(obj: {[key: string] : ICostState}): {[key: string] : Cost} {
+        let ans: {[key: string] : Cost} = {};
+        Object.keys(obj).forEach(key => {
+            ans[key].loadJSON(obj[key]);
+        });
+        return ans;
+    }
+
+    private serializeProd(obj: {[key: string] : BigNumber}): {[key: string] : string} {
+        let ans: {[key: string] : string} = {};
+        Object.keys(obj).forEach(key => {
+            ans[key] = obj[key].toFixed();
+        });
+        return ans;
+    }
+
+    private deserializeProd(obj: {[key: string] : string}): {[key: string] : BigNumber} {
+        let ans: {[key: string] : BigNumber} = {};
+        Object.keys(obj).forEach(key => {
+            ans[key] = new BigNumber(obj[key]);
+        });
+        return ans;
     }
 
     /* only for the blachole */

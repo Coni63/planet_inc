@@ -2,6 +2,9 @@ import { Planet } from "../classes/planet";
 import BigNumber from 'bignumber.js';
 import { Cost } from '../classes/upgrade_costs';
 
+// https://www.fantasynamegenerators.com/planet_names.php
+// https://www.fantasynamegenerators.com/material-names.php
+
 enum planetName {
   a = "alpha",
   b = "beta",

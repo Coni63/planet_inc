@@ -3,6 +3,7 @@ import { distances } from '../data/factors';
 import { interval, timer } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Planet } from './planet';
+import { IFleetState } from './interfaces';
 
 export class Fleet {
     planet: Planet;
@@ -58,6 +59,22 @@ export class Fleet {
                 this.isTraveling = false;
             });
         });
+    }
+
+    toJSON(): IFleetState {
+        return {
+            count: this.count.toFixed(),
+            volume: this.volume.toFixed(),
+            speed: this.speed.toFixed(),
+            acceleration: this.acceleration.toFixed(),
+        }
+    }
+
+    loadJSON(data: IFleetState) {
+        this.count = new BigNumber(data.count);
+        this.volume = new BigNumber(data.volume);
+        this.speed = new BigNumber(data.speed);
+        this.acceleration = new BigNumber(data.acceleration);
     }
 
     private _getRessourcesFrom(planet: Planet){
