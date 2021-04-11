@@ -12,13 +12,14 @@ export class Cost {
         this.a0 = a0;
         this.b0 = b0;
         this.offset = offset;
+        this.currentCost = new BigNumber(this.a0);
     }
 
     upgrade(){
         if (this.level < this.offset) {
             this.currentCost = new BigNumber(0);
         } else if (this.level == this.offset) {
-            this.currentCost = this.a0;
+            this.currentCost = new BigNumber(this.a0);
         } else {
             this.currentCost = this.currentCost.multipliedBy(this.b0);
         }
