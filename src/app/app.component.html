@@ -1,8 +1,10 @@
 <app-background></app-background>
 
 <div class="content-wrapper">
-  <ng-container *ngFor="let planet of planets">
-    <app-card *ngIf="planet.discovered" [planet]="planet" [discoveredItems]="discoveredItems"></app-card>
-  </ng-container>
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+  <!-- <app-story></app-story>
+  <app-achievements></app-achievements>
+  <app-game></app-game> -->
 </div>
 

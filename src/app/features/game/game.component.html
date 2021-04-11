@@ -1,0 +1,5 @@
+<div class="flex">
+    <ng-container *ngFor="let planet of planets">
+        <app-card *ngIf="planet.discovered" [planet]="planet" [discoveredItems]="discoveredItems"></app-card>
+    </ng-container>
+</div>

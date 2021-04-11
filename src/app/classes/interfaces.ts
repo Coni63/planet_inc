@@ -1,6 +1,9 @@
 export interface ICostState {
     currentCost: string;
     level: number;
+    a0: string;
+    b0: string;
+    offset: number;
 }
 
 export interface IFleetState {

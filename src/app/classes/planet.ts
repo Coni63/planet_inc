@@ -184,6 +184,7 @@ export class Planet {
     private deserializeCost(obj: {[key: string] : ICostState}): {[key: string] : Cost} {
         let ans: {[key: string] : Cost} = {};
         Object.keys(obj).forEach(key => {
+            ans[key] = new Cost(new BigNumber(1));
             ans[key].loadJSON(obj[key]);
         });
         return ans;

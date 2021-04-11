@@ -142,60 +142,60 @@ gamma.cost_discovery = {
 
 // set upgrade costs
 alpha.cost_production = {
-  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2), false)
+  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2))
 };
 alpha.cost_storage = {
-  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2), false)
+  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2))
 };
 alpha.cost_units = {
-  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2), false)
+  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2))
 };
 alpha.cost_speed = {
-  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2), false)
+  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2))
 };
 alpha.cost_acceleration = {
-  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2), false)
+  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2))
 };
 alpha.cost_volume = {
-  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2), false)
+  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2))
 };
 
 beta.cost_production = {
-  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2), false)
+  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2))
 };
 beta.cost_storage = {
-  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2), false)
+  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2))
 };
 beta.cost_units = {
-  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2), false)
+  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2))
 };
 beta.cost_speed = {
-  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2), false)
+  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2))
 };
 beta.cost_acceleration = {
-  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2), false)
+  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2))
 };
 beta.cost_volume = {
-  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2), false)
+  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2))
 };
 
 gamma.cost_production = {
-  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2), false)
+  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2))
 };
 gamma.cost_storage = {
-  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2), false)
+  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2))
 };
 gamma.cost_units = {
-  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2), false)
+  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2))
 };
 gamma.cost_speed = {
-  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2), false)
+  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2))
 };
 gamma.cost_acceleration = {
-  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2), false)
+  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2))
 };
 gamma.cost_volume = {
-  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2), false)
+  [itemName.a] : new Cost(new BigNumber(5),new BigNumber(2))
 };
 
 // start point

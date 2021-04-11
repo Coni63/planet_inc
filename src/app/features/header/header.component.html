@@ -1,0 +1,9 @@
+<div class="header">
+    <div class="btn" routerLink="game" routerLinkActive="active">game</div>
+    <div class="btn" routerLink="achievements" routerLinkActive="active">achievements</div>
+    <div class="btn" routerLink="story" routerLinkActive="active">story</div>
+    <span class="spacer"></span>
+    <div class="btn" (click)="save()">
+        <fa-icon [icon]="saveIcon"></fa-icon>&nbsp;&nbsp;Save
+    </div>
+</div>
