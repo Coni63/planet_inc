@@ -20,6 +20,7 @@ import { AchievementsComponent } from './features/achievements/achievements.comp
 
 import { BigNumberPipe } from './pipes/big-number.pipe';
 import { PlanetsService } from './services/planets.service';
+import { TbdComponent } from './components/tbd/tbd.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { PlanetsService } from './services/planets.service';
     GameComponent,
     StoryComponent,
     AchievementsComponent,
+    TbdComponent,
   ],
   imports: [
     BrowserModule,

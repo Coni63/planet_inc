@@ -1,0 +1,16 @@
+@use '../../../assets/variables.scss';
+
+#content {
+    position: relative;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+    color: variables.$font-light;
+    font-size: 50px;
+}
