@@ -3,8 +3,8 @@ import { timer, Subscription } from 'rxjs';
 
 import { Planet } from '../classes/planet';
 import { planets, blackhole } from '../data/planets';
-import BigNumber from 'bignumber.js';
-// https://www.npmjs.com/package/bignumber.js
+import BigNumber from 'bignumber.js'; // https://www.npmjs.com/package/bignumber.js
+import { IPlanetState } from '../classes/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +17,13 @@ export class PlanetsService {
   factor: BigNumber;
   discoveredItems: Set<string> = new Set<string>();
   subscription: Subscription;
+  duration: number;
 
   constructor() {
     this.planets = planets;
     this.blackhole = blackhole;
     this.factor = new BigNumber(2);
+    this.duration = 0;
 
     Object.keys(this.planets).forEach(planetName => {
       const planet = this.planets[planetName];
@@ -32,36 +34,48 @@ export class PlanetsService {
 
     this.load();
 
+    this.show_all();
+
     this.subscription = timer(1000, 1000).subscribe(res => this.increment());
     this.subscription = timer(10000, 10000).subscribe(res => this.incrementBlackHole());
   }
 
   load(){
-    let game_encoded = localStorage.getItem("game");
-    if (game_encoded){
-      let game = JSON.parse(atob(game_encoded));
-      game.forEach(data => {
+    let data_encoded = localStorage.getItem("data");
+    if (data_encoded){
+      let data = JSON.parse(atob(data_encoded));
+      this.duration = data.duration;
+      data.planet.forEach(data => {
         let id = data["id"];
         this.planets[id].loadJSON(data);
-      }) 
+      });
+      console.log("game restored");
     }
+    console.log("no save found");
   }
 
   save(){
-    let game = this.stringifiedPlanet();
-    let game_encoded = btoa(game);
-    localStorage.setItem("game", game_encoded)
+    let data = {
+      planet: this.exportPlanet(),
+      duration: this.duration
+    }
+    let data_encoded = btoa(JSON.stringify(data));
+    localStorage.setItem("data", data_encoded);
+    console.log("saved!");
   }
 
-  private stringifiedPlanet(): string {
-    let status = [];
+  private exportPlanet(): IPlanetState[] {
+    let status: IPlanetState[] = [];
     this.planets.forEach(planet => {
       if (planet.discovered) {
         status.push(planet.toJSON());
       }
     });
-    console.log(status);
-    return JSON.stringify(status);
+    return status;
+  }
+
+  private show_all(){
+    this.planets.forEach(planet => planet.discovered = true);
   }
 
   discover(currentPlanet: Planet){
