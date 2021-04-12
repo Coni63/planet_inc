@@ -21,6 +21,7 @@ import { AchievementsComponent } from './features/achievements/achievements.comp
 import { BigNumberPipe } from './pipes/big-number.pipe';
 import { PlanetsService } from './services/planets.service';
 import { TbdComponent } from './components/tbd/tbd.component';
+import { NeumorphismComponent } from './components/neumorphism/neumorphism.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { TbdComponent } from './components/tbd/tbd.component';
     StoryComponent,
     AchievementsComponent,
     TbdComponent,
+    NeumorphismComponent,
   ],
   imports: [
     BrowserModule,

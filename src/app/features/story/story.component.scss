@@ -1,0 +1,11 @@
+.content {
+
+    display: flex;
+    justify-content: center;
+
+    app-neumorphism {
+        width: 60%;
+        min-width: 400px;
+        overflow-wrap: break-word;
+    }
+}

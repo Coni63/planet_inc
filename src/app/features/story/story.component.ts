@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoryComponent implements OnInit {
 
+  text = "<h1>Hello</h1>World";
+
   constructor() { }
 
   ngOnInit(): void {

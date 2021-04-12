@@ -1,0 +1,20 @@
+@use '../../../assets/variables.scss';
+
+.section-dark {
+	color: variables.$font-light;
+    background: rgba(variables.$bg-dark, 0.3);
+
+}
+
+@mixin box-shadow($color) {
+	padding: 1em;
+	border-radius: .5em;
+	box-shadow: 
+	-.3em -.3em .3em 0 lighten($color, 10%),
+	.3em .3em .3em 0 darken($color, 10%);
+	margin: 1em 1em 0em 0em;
+}
+
+.neumorphism-dark {
+	@include box-shadow(variables.$bg-dark);
+}
