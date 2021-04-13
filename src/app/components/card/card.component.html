@@ -40,8 +40,12 @@
                 </div>
                 <div class="card__body">
                     <ng-container *ngIf="!planet.isEmptyObject(planet.storage)" >
-                        <app-planet-fleet [fleet]="planet.fleet"></app-planet-fleet>
-                        <app-planet-travel [fleet]="planet.fleet" [planets]="planets"></app-planet-travel>
+                        <div class="shrink">
+                            <app-planet-fleet [fleet]="planet.fleet"></app-planet-fleet>
+                        </div>
+                        <div class="grow">
+                            <app-planet-travel [fleet]="planet.fleet" [planets]="planets"></app-planet-travel>
+                        </div>
                     </ng-container>
                 </div>
                 <div class="card__footer">

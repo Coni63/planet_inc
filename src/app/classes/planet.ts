@@ -46,8 +46,7 @@ export class Planet {
     increment(){
         if (this.can_increment()) {
             Object.keys(this.production).forEach(key => {
-                let next_value = this.storage[key].plus(this.production[key]);
-                this.storage[key] = next_value.isGreaterThanOrEqualTo(this.maxStorage) ? this.maxStorage : next_value;
+                this.storage[key] = BigNumber.minimum(this.storage[key].plus(this.production[key]), this.maxStorage);
             });
 
             Object.keys(this.consumption).forEach(key => {

@@ -7,6 +7,10 @@ import { BigNumber } from 'bignumber.js'
 export class BigNumberPipe implements PipeTransform {
 
   transform(value: BigNumber, sign: boolean = false): string {
+    if (!value){
+      return "";
+    }
+    
     const threshold = new BigNumber(1000000000);
     let s = (sign && value.isGreaterThanOrEqualTo(0)) ? "+" : "";
     if (value.isGreaterThanOrEqualTo(threshold)){

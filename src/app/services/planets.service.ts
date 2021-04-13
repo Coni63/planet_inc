@@ -24,6 +24,8 @@ export class PlanetsService {
     this.blackhole = blackhole;
     this.factor = new BigNumber(2);
     this.duration = 0;
+    
+    this.show_all();
 
     Object.keys(this.planets).forEach(planetName => {
       const planet = this.planets[planetName];
@@ -34,7 +36,6 @@ export class PlanetsService {
 
     this.load();
 
-    this.show_all();
 
     this.subscription = timer(1000, 1000).subscribe(res => this.increment());
     this.subscription = timer(10000, 10000).subscribe(res => this.incrementBlackHole());

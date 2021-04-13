@@ -74,6 +74,7 @@ function defaultStorage(): {[key: string]: BigNumber} {
     [itemName.h] : new BigNumber(0),
     [itemName.i] : new BigNumber(0),
     [itemName.j] : new BigNumber(0),
+    [itemName.k] : new BigNumber(0),
     [itemName.l] : new BigNumber(0),
     [itemName.m] : new BigNumber(0),
     [itemName.n] : new BigNumber(0),
@@ -86,6 +87,7 @@ function defaultStorage(): {[key: string]: BigNumber} {
     [itemName.u] : new BigNumber(0),
     [itemName.v] : new BigNumber(0),
     [itemName.w] : new BigNumber(0),
+    [itemName.x] : new BigNumber(0),
     [itemName.y] : new BigNumber(0),
   };
 }

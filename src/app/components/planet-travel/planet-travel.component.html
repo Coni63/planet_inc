@@ -1,15 +1,19 @@
 <div class="container">
-    <h3>Travel</h3>
-    <!--  tooltip="Send your fleet to another planet to get ressources. Attention, if your storage is full, ressources are lost" placement="top" -->
-    <dl>
-        <ng-container *ngFor="let planet of planets; let index = index">
-            <ng-container *ngIf="(index != fleet.planet.id) && (planet.discovered)">
-                <dt>{{ planet.name }}</dt>
-                <dd>
-                    {{ fleet.times[index] | bigNumber }} s ({{ fleet.dists[index] | bigNumber}} m)
-                    <input type="button" [value]="getButtonText()" (click)="sendTo($event, planet)" [disabled]="isTraveling()" />
-                </dd>
-            </ng-container>
-        </ng-container>
-    </dl>
+    <div class="outer">
+        <h3>Travel</h3>
+        <!--  tooltip="Send your fleet to another planet to get ressources. Attention, if your storage is full, ressources are lost" placement="top" -->
+        <div class="inner">
+            <dl>
+                <ng-container *ngFor="let planet of planets; let index = index">
+                    <ng-container *ngIf="(index != fleet.planet.id) && (planet.discovered)">
+                        <dt>{{ planet.name }}</dt>
+                        <dd>
+                            {{ fleet.times[index] | bigNumber }} s ({{ fleet.dists[index] | bigNumber}} m)
+                            <input type="button" [value]="getButtonText()" (click)="sendTo($event, planet)" [disabled]="isTraveling()" />
+                        </dd>
+                    </ng-container>
+                </ng-container>
+            </dl>
+        </div>
+    </div>
 </div>
